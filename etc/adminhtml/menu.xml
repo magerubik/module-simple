@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magerubik_Simple::menu" title="Magerubik" module="Magerubik_Simple" translate="title" sortOrder="68" resource="Magerubik_Simple::menu"/>
+        <add id="Magerubik_Simple::manager" title="Manager Message" module="Magerubik_Simple" translate="title" sortOrder="1068" parent="Magerubik_Simple::menu" resource="Magerubik_Simple::manager" action="simple/message"/>
+    </menu>
+</config>

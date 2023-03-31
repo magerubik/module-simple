@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="vendor_message" resource="default" engine="innodb" comment="vendor message Table">
+        <column xsi:type="int" name="messages_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Messages ID"/>
+        <column xsi:type="smallint" name="user_id" padding="5" unsigned="true" nullable="false" identity="false" default="0" comment="User ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+        <column xsi:type="mediumtext" name="description" nullable="true" comment="Description"/>
+        <column xsi:type="varchar" name="img_attachment" nullable="false" length="255" comment="image attachment"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="20" default="not read yet" comment="Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="messages_id"/>
+        </constraint>
+        <index referenceId="VENDOR_MESSAGE_USER_ID" indexType="btree">
+            <column name="user_id"/>
+        </index>
+    </table>
+</schema>

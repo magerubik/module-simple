@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="message_listing_data_source" xsi:type="string">message_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="message_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vendor_message</argument>
+            <argument name="resourceModel" xsi:type="string">Magerubik\Simple\Model\ResourceModel\Message</argument>
+        </arguments>
+    </virtualType>
+	<virtualType name="Magerubik\Simple\Model\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Magerubik\Simple\Model\ImageProcessor::SIMPLE_MEDIA_PATH</argument>
+            <argument name="basePath" xsi:type="const">Magerubik\Simple\Model\ImageProcessor::SIMPLE_MEDIA_TMP_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magerubik\Simple\Controller\Adminhtml\Uploader\MessageImage">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magerubik\Simple\Model\ImageUpload</argument>
+        </arguments>
+    </type>
+	<type name="Magerubik\Simple\Model\ImageProcessor">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magerubik\Simple\Model\ImageUpload</argument>
+        </arguments>
+    </type>
+</config>
